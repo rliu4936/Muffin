@@ -2,17 +2,14 @@ const Discord  = require('discord.js');
 const Client = new Discord.Client();
 const Token = 'NjcyNTk1MjczODU5NDY1MjQ0.XjNzxA.SUENHa7rGbhezWRataxEgyrBv_I';
 const Prefix = '!';
-
 Client.on('ready', () =>{
     Client.channels.find(channels => channels.name === 'welcomes').send("Online!");
     console.log("Ready");
 });
-
 Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
     Client.guilds.get().createEmoji(member.avatarURL,member.username);
 });
-
 Client.on('message', msg =>{
     if(isContain(msg.content ,'nigger')||isContain(msg.content, 'bitch')||isContain(msg.content, 'faggot')||isContain(msg.content, 'retard')){
         msg.delete();
@@ -38,7 +35,6 @@ Client.on('message', msg =>{
         }
     }
 });
-
 Client.login(Token);
 function isContain(input, str) {
     if(input.toLowerCase().replace(/\s/g, '').includes(str)){
