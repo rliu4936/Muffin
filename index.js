@@ -5,11 +5,20 @@ const Prefix = '!';
 
 Client.on('ready', () =>{
     Client.channels.find(channels => channels.name === 'welcomes').send("Online!");
+    client.user.setPresence({
+        game: { 
+            name: 'Tato/s disc',
+            type: 'WATCHING'
+        },
+        status: 'idle'
+    })
     console.log("Ready");
 });
 
 Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
+    Client.guilds.
+
 });
 
 Client.on('message', msg =>{
