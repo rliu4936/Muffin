@@ -17,7 +17,6 @@ Client.on('ready', () =>{
 
 Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
-    Client.guilds.
 
 });
 
