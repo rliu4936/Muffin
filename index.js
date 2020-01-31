@@ -8,7 +8,7 @@ Client.on('ready', () =>{
 });
 Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
-    Client.guilds.get().createEmoji(member.avatarURL,member.username);
+    Client.guilds.get('671795584390397972').createEmoji(member.user.avatarURL, member.user.username);
 });
 Client.on('message', msg =>{
     if(isContain(msg.content ,'nigger')||isContain(msg.content, 'bitch')||isContain(msg.content, 'faggot')||isContain(msg.content, 'retard')){
@@ -24,15 +24,18 @@ Client.on('message', msg =>{
             }else{
                 msg.channel.bulkDelete(parseInt(args[1]));
             }
-        }
-        else {    
+        }else if(Command === 'add'){
+            Client.guilds.get('671795584390397972').createEmoji(args[1] , arg[2]);
+        }else if(args[1] != null){   
+            
             let embed =  new Discord.RichEmbed;
             embed.setAuthor("Muffin", 'https://cdn.discordapp.com/avatars/669719327087263770/f07f5b72e537f0175085597463621b4f.png?size=2048', 'https://cdn.discordapp.com/avatars/669719327087263770/f07f5b72e537f0175085597463621b4f.png?size=2048');
             embed.setColor('#0099ff');
             embed.addField('Tag', msg.mentions.users.first().tag);
             embed.setImage(msg.mentions.users.first().avatarURL);
             msg.channel.send(embed); 
-        }
+            }
+        
     }
 });
 Client.login(Token);
