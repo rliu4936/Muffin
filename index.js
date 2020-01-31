@@ -3,7 +3,7 @@ const Client = new Discord.Client();
 const Token = 'NjcyNTk1MjczODU5NDY1MjQ0.XjNzxA.SUENHa7rGbhezWRataxEgyrBv_I';
 const Prefix = '!';
 Client.on('ready', () =>{
-    Client.channels.find(channels => channels.name === 'welcomes').send("Online!");
+    Client.channels.find(channels => channels.name === 'botlog').send("Online!");
     console.log("Ready");
 });
 Client.on('guildMemberAdd', member => {
@@ -25,7 +25,7 @@ Client.on('message', msg =>{
                 msg.channel.bulkDelete(parseInt(args[1]));
             }
         }else if(Command === 'add'){
-            Client.guilds.get('671795584390397972').createEmoji(args[1] , arg[2]);
+            Client.guilds.get('671795584390397972').createEmoji(args[0] , arg[1]);
         }else if(args[1] != null){   
             
             let embed =  new Discord.RichEmbed;
