@@ -12,7 +12,6 @@ Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
 });
 
-
 Client.on('message', msg =>{
     if(isContain(msg.content ,'nigger')||isContain(msg.content, 'bitch')||isContain(msg.content, 'faggot')||isContain(msg.content, 'retard')){
         msg.delete();
