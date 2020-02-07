@@ -1,5 +1,6 @@
 const Discord  = require('discord.js');
 const Client = new Discord.Client();
+const fetch = require('node-fetch');
 const Token = 'NjcyNTk1MjczODU5NDY1MjQ0.XjNzxA.SUENHa7rGbhezWRataxEgyrBv_I';
 const Prefix = '!';
 Client.on('ready', () =>{
@@ -49,7 +50,14 @@ Client.on('message', msg =>{
             msg.channel.send(embed); 
             }
             }
+        else if(Command === 'weather'){ 
+            fetch('https://api.openweathermap.org/data/2.5/weather?id=6173331&appid=1d3997b9fa93fafcde434323d1c7e5c1&units=metric')
+             .then(res => res.json())
+            .then(json => {
+         msg.channel.send('It is '+json.main.temp+ '° in '+ json.name+', '+json.sys.country);
         
+    });
+        }
     }
 });
 Client.login(Token);
