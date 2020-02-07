@@ -6,7 +6,6 @@ const Prefix = '!';
 Client.on('ready', () =>{
     Client.channels.find(channels => channels.name === 'bot-log-and-tests').send("Online!");
     console.log("Ready");
-    //Client.guilds.get('671795584390397972').createEmoji('https://cdn.discordapp.com/avatars/669719327087263770/f07f5b72e537f0175085597463621b4f.png?size=2048' , 'test');
 });
 Client.on('guildMemberAdd', member => {
     Client.channels.find(channels => channels.name === 'welcomes').send(`Welcome to the server, ${member}`);
@@ -22,21 +21,18 @@ Client.on('message', msg =>{
         if(Command === 'clear'){
             if (isNaN(args[1])) {
                 msg.channel.send(`You didn't a valid argument, ${msg.author}!`);
-            }else if(args[1]<1 || args[1]>100){
-                msg.channel.send(`argument has to be bigger than 0 and smaller than 100, ${msg.author}!`);
+            }else if(args[1]<1 || args[1]>99){
+                msg.channel.send(`argument has to be bigger than 0 and smaller than 99, ${msg.author}!`);
             }
             else{
                 msg.channel.bulkDelete(parseInt(args[1]));
             }
-        // }else if(Command === 'add'){
-        //     console.log('args0'+ args[0]);
-        //     console.log('args1'+ args[1]);
-        //     console.log('args2'+ args[2]);
-        //     if (args[1]==null || args[2]==null) {
-        //         msg.channel.send(`You didn't valid arguments, ${msg.author}!`);
-        //     }else{
-        //         Client.guilds.get('671795584390397972').createEmoji(args[1] , args[2]);
-        //     }
+        }else if(Command === 'add'){
+            if (args[1]==null || args[2]==null) {
+                msg.channel.send(`You didn't valid arguments, ${msg.author}!`);
+            }else{
+                Client.guilds.get('671795584390397972').createEmoji(args[1] , args[2]);
+            }
         }
         else if(Command === 'avatar'){   
             if (args[1]==null) {
