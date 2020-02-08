@@ -3,6 +3,8 @@ const Client = new Discord.Client();
 const fetch = require('node-fetch');
 const Token = 'NjcyNTk1MjczODU5NDY1MjQ0.XjNzxA.SUENHa7rGbhezWRataxEgyrBv_I';
 const Prefix = '!';
+
+
 Client.on('ready', () =>{
     Client.channels.find(channels => channels.name === 'bot-log-and-tests').send("Online!");
     console.log("Ready");
@@ -53,6 +55,10 @@ Client.on('message', msg =>{
          msg.channel.send('It is '+json.main.temp+ '° in '+ json.name+', '+json.sys.country);
         
     });
+
+        }
+        else if(Command === 'help'){ 
+            help();
         }
     }
 });
@@ -62,4 +68,15 @@ function isContain(input, str) {
         return true;
     }
     return false;
+}
+function help(){
+    const Embed = new Discord.RichEmbed()
+    .setColor('#0099ff')
+    .setTitle('Help')
+    .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+    .addField('!avatar', '!avatar @', true)
+    .addBlankField()
+    .addField('!weather', '!weather String', true)
+    .addField('!clear', '!clear #', true)
+    msg.channel.send(Embed);
 }
