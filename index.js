@@ -65,6 +65,7 @@ function help(msg){
     .addField('!clear', 'reeeeeeeeeeeee')
     .addField('!help', 'reeeeeeeeeeeee')
     .addField('!add', 'reeeeeeeeeeeee')
+    .addField('!meme', 'reeeeeeeeeeeee')
     msg.channel.send(embed);
 }
 function weather(msg){
