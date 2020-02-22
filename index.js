@@ -41,7 +41,7 @@ Client.on('message', msg =>{
         else if(Command === 'meme'){ 
             meme(msg);
         }
-        else if(Command === 'version'){ 
+        else if(Command === 'version' || Command === 'v'){ 
             version(msg);
         }
     }
