@@ -3,6 +3,7 @@ const Client = new Discord.Client();
 const fetch = require('node-fetch');
 const Token = 'NjcyNTk1MjczODU5NDY1MjQ0.XjNzxA.SUENHa7rGbhezWRataxEgyrBv_I';
 const Prefix = '!';
+const version = '1.0.2'
 
 
 Client.on('ready', () =>{
@@ -39,6 +40,9 @@ Client.on('message', msg =>{
         }
         else if(Command === 'meme'){ 
             meme(msg);
+        }
+        else if(Command === 'version'){ 
+            version(msg);
         }
     }
 });
@@ -116,4 +120,8 @@ function clear(msg, n){
     else{
         msg.channel.bulkDelete(parseInt(n));
     }
+}
+
+function version(msg){
+    msg.channel.send(version);
 }
