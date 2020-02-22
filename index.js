@@ -21,14 +21,7 @@ Client.on('message', msg =>{
         const args = msg.content.slice(Prefix.length).split(" ");
         const Command = args[0];
         if(Command === 'clear'){
-            if (isNaN(args[1])) {
-                msg.channel.send(`You didn't a valid argument, ${msg.author}!`);
-            }else if(args[1]<1 || args[1]>99){
-                msg.channel.send(`argument has to be bigger than 0 and smaller than 99, ${msg.author}!`);
-            }
-            else{
-                msg.channel.bulkDelete(parseInt(args[1]));
-            }
+            clear(clear, args[1]);
         }else if(Command === 'add'){
             add(msg);
         }
@@ -49,13 +42,16 @@ Client.on('message', msg =>{
         }
     }
 });
+
 Client.login(Token);
+
 function isContain(input, str) {
     if(input.toLowerCase().replace(/\s/g, '').includes(str)){
         return true;
     }
     return false;
 }
+
 function help(msg){
     let embed = new Discord.RichEmbed()
     .setColor('#0099ff')
@@ -68,6 +64,7 @@ function help(msg){
     .addField('!meme', 'reeeeeeeeeeeee')
     msg.channel.send(embed);
 }
+
 function weather(msg){
     fetch('https://api.openweathermap.org/data/2.5/weather?id=6173331&appid=1d3997b9fa93fafcde434323d1c7e5c1&units=metric')
              .then(res => res.json())
@@ -76,6 +73,7 @@ function weather(msg){
         
     });
 }
+
 function avatar(msg, name){
     if (name==null) {
         msg.channel.send(`You didn't a valid argument, ${msg.author}!`);
@@ -88,6 +86,7 @@ function avatar(msg, name){
     msg.channel.send(embed); 
     }
 }
+
 function add(msg){
     if (args[1]==null || args[2]==null) {
         msg.channel.send(`You didn't valid arguments, ${msg.author}!`);
@@ -95,6 +94,7 @@ function add(msg){
         Client.guilds.get('671795584390397972').createEmoji(args[1] , args[2]);
     }
 }
+
 function meme(msg){
     fetch('https://meme-api.herokuapp.com/gimme')
     .then(res => res.json())
@@ -105,4 +105,15 @@ function meme(msg){
         embed.setImage(json.url);
         msg.channel.send(embed);
     });
+}
+
+function clear(msg, n){
+    if (isNaN(n)) {
+        msg.channel.send(`Please enter a number, ${msg.author}!`);
+    }else if(n<1||n>100){
+        msg.channel.send(`Argument has to be bigger than 0 and can't be bigger than 100, ${msg.author}!`);
+    }
+    else{
+        msg.channel.bulkDelete(parseInt(n));
+    }
 }
